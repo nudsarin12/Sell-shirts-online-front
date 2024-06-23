@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Register Form</title>
+    <link rel="stylesheet" href="register.component.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="form-box login">
+            <h2><b>Register</b></h2>
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" action="#">
+                <div class="input-box">
+                    <span class="icon"><i class="fa-solid fa-user"></i></span>
+                    <input formControlName="fristName" type="text" required>
+                    <label>First name</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><i class="fa-solid fa-user"></i></span>
+                    <input formControlName="lastName" type="text" required>
+                    <label>Last name</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><i class="fa-solid fa-phone"></i></span>
+                    <input formControlName="phone" type="text" required>
+                    <label>Phone</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><i class="fa-solid fa-face-smile"></i></span>
+                    <input formControlName="age" type="number" required min="0">
+                    <label>Age</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><i class="fa-solid fa-users"></i></span>
+                    <input formControlName="userName" type="text" required>
+                    <label>Username</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><i class="fa-solid fa-lock"></i></span>
+                    <input formControlName="password"  type="password" required>
+                    <label>Create password</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><i class="fa-solid fa-rotate-right"></i></span>
+                    <input formControlName="confirmPassword" type="password" required>
+                    <label>Repeat password</label>
+                </div>
+                <div class="dropdown-container">
+                    <div class="dropdown">
+                        <!-- <button class="btn btn-secondary dropdown-toggle" type="button"  data-bs-toggle="dropdown" aria-expanded="false">
+                         Role
+                        </button> -->
+                        
+                            <select formControlName="roleId" class="form-control">
+                                <option selected disabled value="">กรุณาเลือก Role</option>
+                                <option *ngFor="let item of roleList" [value]="item.id">{{item.roleName}}</option>
+                            </select>
+                        
+                        
+            
+                        <!-- <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <option *ngFor="let item of roleList" value="{{item.id}}">{{item.roleName}}</option>
+                        </ul> -->
+                        <div>
+                            <p class="text-danger" *ngIf="isPassword">รหัสผ่านไม่ตรงกัน</p>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn">Save Account </button> 
+            </form>
+        </div>
+    </div>
+</body>
+</html>

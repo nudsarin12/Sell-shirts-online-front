@@ -1,0 +1,106 @@
+<!-- <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+	<div class="container col-xl-10 col-xxl-8 px-4 py-5">
+		<div class="col-lg-7 text-center text-lg-start">
+			<h1 class="display-4 fw-bold lh-1 mb-3">Profile</h1>
+			<p class="col-lg-10 fs-4"></p>
+		</div>
+		<div class="form-group input-group">
+			<div class="input-group-prepend">
+				<span class="input-group-text"> <i class="fa fa-user"></i> </span>
+			</div>
+			<input formControlName="fristName" class="form-control" placeholder="Frist name" type="text">
+		</div> 
+    <div class="form-group input-group">
+			<div class="input-group-prepend">
+				<span class="input-group-text"> <i class="fa fa-user"></i> </span>
+			</div>
+			<input formControlName="lastName" class="form-control" placeholder="Last name" type="text">
+		</div> 
+		<div class="form-group input-group">
+			<div class="input-group-prepend">
+				<span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+			</div>
+			<input formControlName="phone" class="form-control" placeholder="Phone number" type="text">
+		</div> 
+    <div class="form-group input-group">
+			<div class="input-group-prepend">
+				<span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+			</div>
+			<input formControlName="age" class="form-control" placeholder="Age" type="text">
+		</div> 
+		<div class="form-group input-group">
+			<div class="input-group-prepend">
+				<span class="input-group-text"> <i class="fa fa-building"></i> </span>
+			</div>
+			<select class="form-control" formControlName="roleId" >
+				<option *ngFor="let item of roleList" value="{{item.id}}">{{item.roleName}}</option>
+			</select>
+		</div> 
+    <div class="form-group input-group">
+			<div class="input-group-prepend">
+				<span class="input-group-text"> <i class="fa fa-user"></i> </span>
+			</div>
+			<input formControlName="userName" class="form-control" placeholder="username" type="text" readonly>
+		</div>                              
+		<div class="form-group">
+			<button type="submit" class="btn btn-primary btn-block"> Save Account  </button>
+		</div>    
+	</div>                                                             
+</form> -->
+
+<!-- ----------------------------------------------------------------------- -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Register Form</title>
+    <link rel="stylesheet" href="profile.component.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="form-box login">
+            <h2><b>{{title}}</b></h2>
+            <form [formGroup]="updateForm" (ngSubmit)="onSubmit()" action="#">
+                <div class="input-box">
+                    <span class="icon"><i class="fa-solid fa-user"></i></span>
+                    <input formControlName="fristName" type="text" required>
+                    <label>First name</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><i class="fa-solid fa-user"></i></span>
+                    <input formControlName="lastName" type="text" required>
+                    <label>Last name</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><i class="fa-solid fa-phone"></i></span>
+                    <input formControlName="phone" type="text" required>
+                    <label>Phone</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><i class="fa-solid fa-face-smile"></i></span>
+                    <input formControlName="age" type="number" required min="0">
+                    <label>Age</label>
+                </div>
+                <div class="input-box">
+                  <span class="icon"><i class="fa-solid fa-users"></i></span>
+                  <input formControlName="userName" type="text" required readonly>
+                  <label style="margin-top: -20px;">Username</label>
+              </div>
+              
+                <div class="dropdown-container">
+                    <div class="dropdown">
+                            <select formControlName="roleId" class="form-control">
+                              <option *ngFor="let item of roleList" value="{{item.id}}">{{item.roleName}}</option>
+                            </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block"> Save Account  </button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

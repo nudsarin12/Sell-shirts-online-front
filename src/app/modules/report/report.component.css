@@ -1,0 +1,107 @@
+/* General settings */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 20px;
+}
+
+/* Card styles */
+.card {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-header {
+  border-bottom: none;
+}
+
+.icon-shape {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  color: #353434;
+  border-radius: 50%;
+}
+
+.icon-shape i {
+  font-size: 24px;
+}
+
+/* Typography */
+h6 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.text-xs {
+  font-size: 12px;
+  color: #6c757d;
+}
+
+/* Button styles */
+.btn {
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 16px;
+  margin: 5px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn i {
+  font-size: 16px;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.btn-danger {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+.btn-danger:hover {
+  background-color: #c0392b;
+  transform: translateY(-2px);
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+}
+
+/* Horizontal rule */
+.hr {
+  border: none;
+  border-top: 1px solid #dcdcdc;
+  margin: 15px 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .col-6 {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .col-md-4 {
+    width: 33.3333%;
+  }
+}

@@ -1,0 +1,56 @@
+
+
+<header class="p-3 bg-dark text-white">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+      </a>
+
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <!-- <li *ngIf="null == userDetail"><a [routerLink]="['/home']" routerLinkActive="router-link-active"  class="nav-link px-2 text-white">Home</a></li> -->
+       
+        <!-- admin -->
+        <li *ngIf="userDetail !== null && userDetail.roleId === 1"><a [routerLink]="['/dashbord-admin']" routerLinkActive="router-link-active" class="nav-link px-2 text-white">หน้าหลัก</a></li>   
+        <li *ngIf="userDetail !== null && userDetail.roleId === 1"><a [routerLink]="['/profile']" routerLinkActive="router-link-active" class="nav-link px-2 text-white">โปรไฟล์</a></li>
+        <li *ngIf="userDetail !== null && userDetail.roleId === 1"><a [routerLink]="['/manage-user']" routerLinkActive="router-link-active" class="nav-link px-2 text-white">จัดการลูกค้า</a></li>
+        <li *ngIf="userDetail !== null && userDetail.roleId === 1"><a [routerLink]="['/manage-product']" routerLinkActive="router-link-active" class="nav-link px-2 text-white">จัดการสินค้า</a></li>
+        <li *ngIf="null != userDetail && userDetail.roleId == 1"><a href="#" class="nav-link px-2 text-dark" [routerLink]="['/report']">รายงาน</a></li>
+        <!-- user -->
+        <!-- <li *ngIf="userDetail !== null && userDetail.roleId === 2"><a [routerLink]="['/home']" routerLinkActive="router-link-active" class="nav-link px-2 text-white">Home</a></li>
+        <li *ngIf="userDetail !== null && userDetail.roleId === 2"><a [routerLink]="['/productuser']" routerLinkActive="router-link-active" class="nav-link px-2 text-white">Products</a></li> -->
+      </ul>
+
+      <form class="d-flex col-12 col-lg-auto mb-3 ms-auto">
+        <input type="search" class="form-control form-control-white me-2 " *ngIf="userDetail !== null && userDetail.roleId === 2" placeholder="Search..." aria-label="Search">
+        <button type="button" class="btn btn-secondary cart-button "  [routerLink]="['/home']" routerLinkActive="router-link-active" *ngIf="userDetail !== null && userDetail.roleId === 2">
+          <i class="bi bi-house"></i>
+        </button>
+        <button  [routerLink]="['/cart']" routerLinkActive="router-link-active" type="button" class="btn btn-secondary cart-button  me-3" *ngIf="userDetail !== null && userDetail.roleId === 2">
+          <i class="bi bi-cart"></i>
+        </button>
+        <div class="dropdown text-end " *ngIf="userDetail !== null && userDetail.roleId === 2">
+          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="true">
+            <img src="assets/img/homes/a.jpg" alt="mdo" width="32" height="32" class="rounded-circle">
+          </a>
+          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 34px);" data-popper-placement="bottom-start">
+            <li><a class="dropdown-item" href="">Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" (click)="logout()">logout</a></li>
+          </ul>
+        </div>
+    </form>
+    
+      
+      <div class="text-end" *ngIf="userDetail === null ">
+        <button type="button" class="purchase-button" data-content="LOGIN" [routerLink]="['/login']" routerLinkActive="router-link-active">Login</button>
+        <button type="button"  class="purchase-button" data-content="SIGN-UP" [routerLink]="['/register']" routerLinkActive="router-link-active">Sign-up</button>
+      </div>
+      <div class="text-end" *ngIf="userDetail !== null  && userDetail.roleId === 1">
+        <button type="button"  class="purchase-button" data-content="LOGOUT"  (click)="logout()">logout</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+
