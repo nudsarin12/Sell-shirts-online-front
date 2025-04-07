@@ -19,8 +19,22 @@ import { UpdateProductComponent } from 'src/app/modules/updateProduct/updateProd
 import { ReportComponent } from 'src/app/modules/report/report.component';
 import { ProductuserComponent } from 'src/app/modules/productuser/productuser.component';
 import { CartComponent } from 'src/app/modules/cart/cart.component';
-import { CheckoutComponent } from 'src/app/modules/checkout/checkout.component';
 import { SuccessComponent } from 'src/app/modules/success/success.component';
+import { ProductDetailComponent } from 'src/app/modules/productDetail/productDetail.component';
+import { ContactComponent } from 'src/app/modules/contact/contact.component';
+import { CreateOrderComponent } from 'src/app/modules/createOrder/createOrder.component';
+import { OrderAdminComponent } from 'src/app/modules/orderAdmin/orderAdmin.component';
+
+import { OrderDetailAdminComponent } from 'src/app/modules/orderDetailAdmin/orderDetailAdmin.component';
+import { OrderUserComponent } from 'src/app/modules/orderUser/orderUser.component';
+import { OrderDetailUserComponent } from 'src/app/modules/orderDetailUser/orderDetailUser.component';
+import { PaymentComponent } from 'src/app/modules/payment/payment.component';
+import { AddressComponent } from 'src/app/modules/address/address.component';
+
+
+
+
+
 
 @NgModule({
   imports: [
@@ -47,8 +61,17 @@ import { SuccessComponent } from 'src/app/modules/success/success.component';
     ReportComponent,
     ProductuserComponent,
     CartComponent,
-    CheckoutComponent,
-    SuccessComponent
+    SuccessComponent,
+    ProductDetailComponent,
+    ContactComponent,
+    CreateOrderComponent,
+    OrderAdminComponent,
+    OrderDetailAdminComponent,
+    OrderUserComponent,
+    OrderDetailUserComponent,
+    PaymentComponent,
+    AddressComponent
+    
   ]
 })
 export class FullwidthModule { }

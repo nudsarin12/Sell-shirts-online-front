@@ -32,8 +32,8 @@ export class UpdateProductComponent implements OnInit {
   updateProductForm = this.formBuilder.group({
     productName : '',
     productDesc : '',
-    price : parseFloat('0').toFixed(2),
-    quantity : 0,
+    productPrice : parseFloat('0').toFixed(2),
+    productStock : 0,
     productTypeId : '',
     files : [],
     productId : ''
@@ -51,7 +51,7 @@ export class UpdateProductComponent implements OnInit {
           if(res.data){
             this.productImgList = res.data
             for(let productImg of this.productImgList){
-              this.getImage(productImg.productImgName)
+              this.getImage(productImg.productImageName)
             }
           }else{
             window.location.reload()
@@ -65,8 +65,8 @@ export class UpdateProductComponent implements OnInit {
     this.updateProductForm.patchValue({
       productName : data.productName,
       productDesc : data.productDesc,
-      price : data.price,
-      quantity : data.quantity,
+      productPrice : data.productPrice,
+      productStock : data.	productStock,
       productTypeId : data.productTypeId,
       productId : data.productId
     })

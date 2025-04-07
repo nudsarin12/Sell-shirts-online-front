@@ -1,0 +1,71 @@
+
+ <div class="card">
+  <div class="row">
+    <div class="col-md-8 cart">
+      <div class="title">
+        <div class="row">
+          <div class="col"><h4><b>Checkout</b></h4></div>
+          <div *ngIf="cart.length === 0" class="text-center">
+            <p class="text-lg">Your cart is empty.</p>
+          </div>
+          <div class="col align-self-center text-right text-muted" *ngIf="cart.length > 0">{{ cart.length }} items</div>
+        </div>
+      </div>
+      <div *ngIf="cart.length > 0">
+        <div class="row border-top border-bottom" *ngFor="let item of cart">
+          <div class="row main align-items-center">
+            <div class="col-2">
+              <img class="img-fluid" [src]="item.imgList.length > 0 ? item.imgList[0].value : 'assets/default-image.jpg'" alt="product">
+            </div>
+            <div class="col">
+              <div class="row text-muted">{{ item.productName }}</div>
+              <div class="row">{{ item.productDesc }}</div>
+            </div>
+            <div class="col">
+              <a href="#" class="border">{{ item.quantity }}</a>
+            </div>
+            <div class="col">{{ (item.productPrice * item.quantity) | currency:'฿' }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="back-to-shop"><a href="cart">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
+    </div>
+
+    <div class="col-md-4 summary">
+      <div class="button-container">
+        <span class="text-muted">Edit information</span>
+        <a href="profile" class="arrow-link"><i class="fa-solid fa-plus"></i></a>
+      </div>
+      <h5 class="text-xl font-semibold">User information</h5>
+      <p>{{ userDetail.firstName }} {{ userDetail.lastName }}</p>
+        <p>{{ userDetail.line }}  </p>
+        <p>{{ userDetail.phone }}</p>
+      <form>
+        <p>SHIPPING</p>
+        <select>
+          <option class="text-muted">Standard-Delivery- free</option>
+        </select>
+        <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+          <div class="col">TOTAL PRICE</div>
+          <div class="col text-right">{{ getTotalPriceWithShipping() | currency:'฿' }}</div>
+        </div>
+      </form>
+      <div class="mb-4">
+        <h5 class="text-xl font-semibold">Payment Method</h5>
+        <div class="payment-options">
+          <label>
+            <input type="radio" name="paymentMethod" value="1" [(ngModel)]="selectedPaymentMethod"> QR Code 
+            <!-- <input type="radio" name="paymentMethod" value="2" [(ngModel)]="selectedPaymentMethod"> PayPal -->
+          </label>
+        </div>
+      </div>
+      <br>
+      <button class="Btn" (click)="placeOrder()">
+        Confirm order
+        <svg viewBox="0 0 576 512" class="svgIcon">
+          <path d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>

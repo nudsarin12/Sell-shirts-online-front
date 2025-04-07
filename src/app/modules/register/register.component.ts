@@ -1,81 +1,9 @@
-// import { Component, OnInit } from '@angular/core';
-// import { CallserviceService } from '../services/callservice.service';
-// import { ActivatedRoute, Router } from '@angular/router';
-// import { FormBuilder } from '@angular/forms';
-// import { last } from 'rxjs';
-
-// @Component({
-//   selector: 'app-register',
-//   templateUrl: './register.component.html',
-//   styleUrls: ['./register.component.css']
-// })
-// export class RegisterComponent implements OnInit {
-
-//   constructor(
-//   private CallService : CallserviceService,
-//   private formBuilder: FormBuilder,
-//     private router: Router,
-//     private activated: ActivatedRoute
-// ) { }
-
-// roleList : any = [];
-
-
-//   ngOnInit() {
-//     this.getAllRole();
-//   }
-
-//   registerForm = this.formBuilder.group({
-//     fristName : [''],
-//     lastName : [''],
-//     phone : [''],
-//     age : [''],
-//     role : [''],
-//     username : [''],
-//     password : [''],
-//     confirmPassword : ['']
-//   })
-
-//   getAllRole() {
-//     this.CallService.getAllRole().subscribe(res=>{
-//       if(res){
-//         this.roleList = res;
-//       }
-//     })
-//   }
-
-  
-//   roleList : any[] = [];
-//   isPassword  : boolean = false;
-  
-//   onSubmit(){
-//     this.isPassword = false
-//     console.log(this.registerForm.value)
-//     if(this.passwordValidate()){
-//       console.log("SUCCESS")
-//     }
-//   }
-
-//   passwordValidate(){
-//     const password = this.registerForm.value.password;
-//     const confirmPassword = this.registerForm.value.confirmPassword;
-
-//     if(password != confirmPassword){
-//       this.isPassword = true;
-//       return false;
-//     }else{
-//       return true;
-//     }
-//   }
-// }
-
-
 import { Component, OnInit } from '@angular/core';
-import { CallserviceService } from '../services/callservice.service';
-import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
-import { last } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { CallserviceService } from '../services/callservice.service';
+
 
 @Component({
   selector: 'app-register',
@@ -85,33 +13,37 @@ import Swal from 'sweetalert2';
 export class RegisterComponent implements OnInit {
 
   constructor(
-    private CallService: CallserviceService,
+    private callService  : CallserviceService,
     private formBuilder: FormBuilder,
     private router: Router,
     private activated: ActivatedRoute
   ) { }
 
-  roleList: any = [];
-  isPassword: boolean = false;
+  roleList : any = [];
+  isPassword : boolean = false
+
 
   ngOnInit() {
     this.getAllRole();
   }
 
   registerForm = this.formBuilder.group({
-    fristName: [''],
-    lastName: [''],
-    phone: [''],
-    age: [''],
-    roleId: [''],
-    userName: [''],
-    password: [''],
-    confirmPassword: ['']
+    firstName : '',
+    lastName : '',
+    age : '',
+    phone : '',
+    email : '',
+    line : '',
+    roleId : '2',
+    userName : '',
+    userPassword : '',
+    confirmPassword : ''
   })
 
-  getAllRole() {
-    this.CallService.getAllRole().subscribe(res => {
-      if (res) {
+  getAllRole(){
+    this.callService.getAllRole().subscribe(res =>{ 
+      console.log(res)
+      if(res){
         this.roleList = res;
       }
     })
@@ -133,20 +65,21 @@ export class RegisterComponent implements OnInit {
           cancelButtonText: 'ยกเลิก'
         }).then((result) => {
           if (result.isConfirmed) {
-            this.CallService.saveRegister(data).subscribe(res=>{
+            this.callService.saveRegister(data).subscribe(res=>{
               if(res.data){
                 Swal.fire({
                   icon: 'success',
                   title: 'สำเร็จ!',
                   text: 'สมัครสมาชิกสำเร็จ',
                   confirmButtonText: 'ตกลง',
+                }).then(ress=>{
+                  this.router.navigate(['/login']);
                 });
-                this.router.navigate(['/login']);
               }else{
                 Swal.fire({
                   icon: 'warning',
-                  title: 'บันทึกไม่สำเสร็จจ้า !',
-                  text: 'กรุณาตรวจสอบข้อมูลด้วยจ้า',
+                  title: 'บันทึกไม่สำเร็จ!',
+                  text: 'กรุณาตรวจสอบข้อมูล ด้วยค่ะ',
                   confirmButtonText: 'ตกลง',
                 });
               }
@@ -156,15 +89,16 @@ export class RegisterComponent implements OnInit {
       }
   }
 
-  passwordValidate() {
-    const password = this.registerForm.value.password;
+  passwordValidate(){
+    const password = this.registerForm.value.userPassword;
     const confirmPassword = this.registerForm.value.confirmPassword;
 
-    if (password != confirmPassword) {
+    if(password != confirmPassword){
       this.isPassword = true;
       return false;
-    } else {
+    }else{
       return true;
     }
   }
+
 }

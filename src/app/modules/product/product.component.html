@@ -46,24 +46,24 @@
                         </button>
                       </div>
                       <div class="form-group row">
-                        <label for="price" class="col-4 col-form-label">ราคา</label> 
+                        <label for="productPrice" class="col-4 col-form-label">ราคา</label> 
                         <div class="col-12">
-                          <input formControlName="price" step='0.01' placeholder="ราคา" class="form-control" type="number" (change)="fixDecimals()" pattern="^[0-9]+(\.[0-9]{1,2})?" required>
+                          <input formControlName="productPrice" step='0.01' placeholder="ราคา" class="form-control" type="number" (change)="fixDecimals()" pattern="^[0-9]+(\.[0-9]{1,2})?" required>
                         </div>
                       </div>
-                      <div class="alert alert-danger alert-dismissible text-white" role="alert" *ngIf="productForm.controls['price'].invalid && (productForm.controls['price'].dirty || productForm.controls['price'].touched || isSubmit)">
+                      <div class="alert alert-danger alert-dismissible text-white" role="alert" *ngIf="productForm.controls['productPrice'].invalid && (productForm.controls['productPrice'].dirty || productForm.controls['productPrice'].touched || isSubmit)">
                         <span class="text-sm">*** กรุณากรอกข้อมูล ราคา</span>
                         <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert" aria-label="Close" (click)="setSubmit()">
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
                       <div class="form-group row">
-                        <label for="quantity" class="col-4 col-form-label">จำนวน</label> 
+                        <label for="productStock" class="col-4 col-form-label">จำนวน</label> 
                         <div class="col-12">
-                          <input formControlName="quantity" placeholder="จำนวน" class="form-control here"  type="number" required>
+                          <input formControlName="productStock" placeholder="จำนวน" class="form-control here"  type="number" required>
                         </div>
                       </div>
-                      <div class="alert alert-danger alert-dismissible text-white" role="alert" *ngIf="productForm.controls['quantity'].invalid && (productForm.controls['quantity'].dirty || productForm.controls['quantity'].touched || isSubmit)">
+                      <div class="alert alert-danger alert-dismissible text-white" role="alert" *ngIf="productForm.controls['productStock'].invalid && (productForm.controls['productStock'].dirty || productForm.controls['productStock'].touched || isSubmit)">
                         <span class="text-sm">*** กรุณากรอกข้อมูล จำนวน</span>
                         <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert" aria-label="Close" (click)="setSubmit()">
                           <span aria-hidden="true">&times;</span>

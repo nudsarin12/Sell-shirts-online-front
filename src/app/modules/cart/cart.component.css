@@ -10,7 +10,7 @@ body{
 .title{
     margin-bottom: 5vh;
 }
-.card{
+.card{ 
     margin: auto;
     max-width: 950px;
     width: 90%;

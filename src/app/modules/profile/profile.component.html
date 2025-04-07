@@ -51,7 +51,7 @@
 <!-- ----------------------------------------------------------------------- -->
 
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -61,46 +61,214 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div class="wrapper">
-        <div class="form-box login">
-            <h2><b>{{title}}</b></h2>
+   
+    <body>
+        <div class="container d-flex justify-content-center mt-5">
             <form [formGroup]="updateForm" (ngSubmit)="onSubmit()" action="#">
-                <div class="input-box">
-                    <span class="icon"><i class="fa-solid fa-user"></i></span>
-                    <input formControlName="fristName" type="text" required>
-                    <label>First name</label>
-                </div>
-                <div class="input-box">
-                    <span class="icon"><i class="fa-solid fa-user"></i></span>
-                    <input formControlName="lastName" type="text" required>
-                    <label>Last name</label>
-                </div>
-                <div class="input-box">
-                    <span class="icon"><i class="fa-solid fa-phone"></i></span>
+                <div class="card">
+                    <div class="top-container">
+                        <img src="https://i.pinimg.com/564x/97/ef/24/97ef241b207714a81b26d15d7371dd10.jpg" class="img-fluid profile-image" width="70">
+                    </div>
+                    <div class="name-container">
+                        <h5 class="name">Profile</h5>
+                    </div>
+                    <div class="recent-border mt-4 input-box">
+                        <span class="icon"><i class="fa-solid fa-user"></i></span>
+                        <input formControlName="fristName" type="text" required>
+                        <label>First name</label>
+                    </div>
+                    <div class="recent-border mt-4 input-box">
+                        <span class="icon"><i class="fa-solid fa-user"></i></span>
+                        <input formControlName="lastName" type="text" required>
+                        <label>Last name</label>
+                    </div>
+                    <div class="recent-border mt-4 input-box">
+                        <span class="icon"><i class="fa-solid fa-phone"></i></span>
                     <input formControlName="phone" type="text" required>
                     <label>Phone</label>
-                </div>
-                <div class="input-box">
-                    <span class="icon"><i class="fa-solid fa-face-smile"></i></span>
+                    </div>
+                    <div class="recent-border mt-4 input-box">
+                        <span class="icon"><i class="fa-solid fa-face-smile"></i></span>
                     <input formControlName="age" type="number" required min="0">
                     <label>Age</label>
-                </div>
-                <div class="input-box">
-                  <span class="icon"><i class="fa-solid fa-users"></i></span>
-                  <input formControlName="userName" type="text" required readonly>
-                  <label style="margin-top: -20px;">Username</label>
-              </div>
-              
-                <div class="dropdown-container">
-                    <div class="dropdown">
-                            <select formControlName="roleId" class="form-control">
-                              <option *ngFor="let item of roleList" value="{{item.id}}">{{item.roleName}}</option>
-                            </select>
                     </div>
+                    <div class="recent-border mt-4 input-box">
+                        <span class="icon"><i class="fa-solid fa-users"></i></span>
+                        <input formControlName="userName" type="text" required readonly>
+                        <label style="margin-top: -20px;">Username</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block"> Save Account  </button>
+                    
                 </div>
-                <button type="submit" class="btn btn-primary btn-block"> Save Account  </button>
             </form>
         </div>
-    </div>
-</body>
-</html>
+    </body> -->
+
+      
+
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Centered Register Form</title>
+        <link rel="stylesheet" href="profile.component.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
+    </head>
+    <body>
+        
+        <section class="vh-150 d-flex justify-content-center align-items-center" style="background-color: #eee; margin-left: -20px; margin-right: -20px;">
+            <div class="container py-5" style="margin-left: -120px;">
+                <div class="row d-flex justify-content-center align-items-center">
+                    <div class="col col-md-9 col-lg-7 col-xl-5">
+                        <div class="card" style="border-radius: 15px; background-color: #f1f1f1;">
+                            <div class="card-body p-4 text-black">
+                                
+                                <div class="loader-container">
+                                    <h6 class="mb-4">{{ title }}</h6>
+                                    <div class="d-flex align-items-center justify-content-between mb-3"></div>
+                                    <div class="bg">
+                                        <div class="loader"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex flex-column align-items-center mb-4">
+                                    <div class="mb-3">
+                                        <img src="https://i.pinimg.com/564x/1c/08/a2/1c08a22c7c1e1e39c877a45d05ea993c.jpg"
+                                            alt="Generic placeholder image" class="img-fluid rounded-circle border  border-3"
+                                            style="width: 70px;">
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p class="mb-0 fw-bold">Full Name</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <p class="text-muted mb-0">{{ userDetail.firstName }} {{ userDetail.lastName }}</p>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p class="mb-0 fw-bold">Phone</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <p class="text-muted mb-0">{{ userDetail.phone }}</p>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p class="mb-0 fw-bold">Age</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <p class="text-muted mb-0">{{ userDetail.age }}</p>
+                                        </div>              
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                          <p class="mb-0 fw-bold">Email</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                          <p class="text-muted mb-0">{{ userDetail.email }}</p>
+                                        </div>              
+                                      </div>
+                                      
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                          <p class="mb-0 fw-bold">Address</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                          <p class="text-muted mb-0">{{ userDetail.line }}</p>
+                                        </div>              
+                                      </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p class="mb-0 fw-bold">Username</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <p class="text-muted mb-0">{{ userDetail.userName }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="text-center">
+                                    <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-dark btn-rounded btn-sm"
+                                        data-mdb-ripple-color="dark" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Edit profile</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header">
+                <h5 id="offcanvasRightLabel">Edit information</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <form [formGroup]="updateForm" (ngSubmit)="onSubmit()" action="#">
+                    <div class="card">
+                        <div class="top-container">
+                            <img src="https://i.pinimg.com/564x/1c/08/a2/1c08a22c7c1e1e39c877a45d05ea993c.jpg" class="img-fluid profile-image" width="70">
+                        </div>
+                        <div class="name-container">
+                            <h5 class="name">Profile</h5>
+                        </div>
+                        <div class="recent-border mt-4 input-box">
+                            <span class="icon"><i class="fa-solid fa-user"></i></span>
+                            <input formControlName="firstName" type="text" required>
+                            <label>First name</label>
+                        </div>
+                        <div class="recent-border mt-4 input-box">
+                            <span class="icon"><i class="fa-solid fa-user"></i></span>
+                            <input formControlName="lastName" type="text" required>
+                            <label>Last name</label>
+                        </div>
+                        <div class="recent-border mt-4 input-box">
+                            <span class="icon"><i class="fa-solid fa-phone"></i></span>
+                            <input formControlName="phone" type="text" required>
+                            <label>Phone</label>
+                        </div>
+                        <div class="recent-border mt-4 input-box">
+                            <span class="icon"><i class="fa-solid fa-face-smile"></i></span>
+                            <input formControlName="age" type="number" required min="0">
+                            <label>Age</label>
+                        </div>
+                        <div class="recent-border mt-4 input-box">
+                            <span class="icon"><i class="fa-regular fa-envelope"></i></span>
+                            <input formControlName="email" type="text" required>
+                            <label>Email</label>
+                        </div>
+                        
+                        <div class="recent-border mt-4 input-box">
+                            <span class="icon"><i class="fa-solid fa-location-dot"></i></span>
+                            <input formControlName="line" type="text" required>
+                            <label>Address</label>
+                        </div>
+                        <div class="recent-border mt-4 input-box">
+                            <span class="icon"><i class="fa-solid fa-users"></i></span>
+                            <input formControlName="userName" type="text" required readonly>
+                            <label style="margin-top: -20px;">Username</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block"> Save Account </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    
+    </body>
+    </html>
+    
+
+
+  

@@ -23,13 +23,14 @@ export class ProductComponent implements OnInit {
 
   ngOnInit() {
     this.getProductTypeAll();
+    console.log(this.getProductTypeAll)
   }
 
   productForm = this.formBuilder.group({
     productName : '',
     productDesc : '',
-    price : parseFloat('0').toFixed(2),
-    quantity : 0,
+    productPrice : parseFloat('0').toFixed(2),
+    productStock : 0,
     productTypeId : '',
     files : [],
     productId : ''
@@ -96,12 +97,12 @@ export class ProductComponent implements OnInit {
 
   setDataDecimal(data : any){
     this.productForm.patchValue({
-      price : parseFloat(data).toFixed(2),
+      productPrice : parseFloat(data).toFixed(2),
     })
   }
 
   fixDecimals(){
-    let value = this.productForm.value.price
+    let value = this.productForm.value.productPrice
     return this.setDataDecimal(value);
   }
 

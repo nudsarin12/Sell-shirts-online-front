@@ -1,0 +1,264 @@
+
+
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Centered Login Form</title>
+      <link rel="stylesheet" href="orderDetailUser.component.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-mT9zL4UzI8F9OYYfZ7XQy6hIwNj8i3+76KmWY6BTe9uJxOaDojF+6VvzI0EYb0gT5p4A5I6lZ3+8UYQW+5JbBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  </head>
+  <body>
+    <div class="row mb-4">
+      <div class="col-lg-8 col-md-6 mb-md-0 mb-4">
+        <div class="card">
+          <div class="card-header pb-0">
+            <div class="row">
+              <h2 class="mb-0 text-uppercase font-weight-bold text-left">
+                Order #{{ order.orderId }}
+              </h2>   
+            </div>
+          </div>
+          <div class="card-body px-0 pb-2">
+            <div class="table-responsive p-0">
+              <table class="table align-items-center mb-0">
+                <thead>
+                  <tr>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Product picture</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Product Name</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Product ID</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Price</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Quantity</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Total</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of order.items">
+                    <td>
+                      <div class="d-flex px-2 py-1">
+                        <div class="d-flex px-2 py-1">
+                          <div>
+                            <img [src]="item.images && item.images.length > 0 ? item.images[0].value : 'assets/default-image.jpg'"
+                                 alt="product"
+                                 class="avatar me-3 border-radius-lg"
+                                 style="border-radius: 0.5rem; width: 64px; height: 75px;">
+                          </div>
+                        </div>
+                        
+                      </div>
+                    </td>
+                    <td>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="mb-0 text-sm">{{ item.productName }}</h6>
+                      </div>
+                    </td>
+                    <td>
+                      <p class="text-xs font-weight-bold mb-0">{{ item.productId }}</p> 
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="text-secondary text-xs font-weight-bold"> {{ item.price | currency:'฿' }}</span>
+  
+                    </td>
+                    <td class="align-middle text-center">
+                      <span class="text-secondary text-xs font-weight-bold"> {{ item.quantity }}</span>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="text-secondary text-xs font-weight-bold"> {{ calculateProductTotal(item) | currency:'฿' }}</span>
+                    </td>
+                    <td class="align-middle text-center">
+                      <span class="text-secondary text-xs font-weight-bold"> {{ order.status }}</span> 
+                    </td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="5"></td>
+                    <td class="align-middle text-center text-sm">
+                      <strong>Total Amount:</strong>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="text-secondary text-xs font-weight-bold"> {{ calculateTotalAmount() | currency:'฿' }}</span>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="card h-100">
+          <div class="loader " >
+            <div class="truckWrapper">
+              <div class="truckBody">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 198 93"
+                  class="trucksvg"
+                >
+                  <path
+                    stroke-width="3"
+                    stroke="#282828"
+                    fill="#F83D3D"
+                    d="M135 22.5H177.264C178.295 22.5 179.22 23.133 179.594 24.0939L192.33 56.8443C192.442 57.1332 192.5 57.4404 192.5 57.7504V89C192.5 90.3807 191.381 91.5 190 91.5H135C133.619 91.5 132.5 90.3807 132.5 89V25C132.5 23.6193 133.619 22.5 135 22.5Z"
+                  ></path>
+                  <path
+                    stroke-width="3"
+                    stroke="#282828"
+                    fill="#7D7C7C"
+                    d="M146 33.5H181.741C182.779 33.5 183.709 34.1415 184.078 35.112L190.538 52.112C191.16 53.748 189.951 55.5 188.201 55.5H146C144.619 55.5 143.5 54.3807 143.5 53V36C143.5 34.6193 144.619 33.5 146 33.5Z"
+                  ></path>
+                  <path
+                    stroke-width="2"
+                    stroke="#282828"
+                    fill="#282828"
+                    d="M150 65C150 65.39 149.763 65.8656 149.127 66.2893C148.499 66.7083 147.573 67 146.5 67C145.427 67 144.501 66.7083 143.873 66.2893C143.237 65.8656 143 65.39 143 65C143 64.61 143.237 64.1344 143.873 63.7107C144.501 63.2917 145.427 63 146.5 63C147.573 63 148.499 63.2917 149.127 63.7107C149.763 64.1344 150 64.61 150 65Z"
+                  ></path>
+                  <rect
+                    stroke-width="2"
+                    stroke="#282828"
+                    fill="#FFFCAB"
+                    rx="1"
+                    height="7"
+                    width="5"
+                    y="63"
+                    x="187"
+                  ></rect>
+                  <rect
+                    stroke-width="2"
+                    stroke="#282828"
+                    fill="#282828"
+                    rx="1"
+                    height="11"
+                    width="4"
+                    y="81"
+                    x="193"
+                  ></rect>
+                  <rect
+                    stroke-width="3"
+                    stroke="#282828"
+                    fill="#DFDFDF"
+                    rx="2.5"
+                    height="90"
+                    width="121"
+                    y="1.5"
+                    x="6.5"
+                  ></rect>
+                  <rect
+                    stroke-width="2"
+                    stroke="#282828"
+                    fill="#DFDFDF"
+                    rx="2"
+                    height="4"
+                    width="6"
+                    y="84"
+                    x="1"
+                  ></rect>
+                </svg>
+              </div>
+              <div class="truckTires">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 30 30"
+                  class="tiresvg"
+                >
+                  <circle
+                    stroke-width="3"
+                    stroke="#282828"
+                    fill="#282828"
+                    r="13.5"
+                    cy="15"
+                    cx="15"
+                  ></circle>
+                  <circle fill="#DFDFDF" r="7" cy="15" cx="15"></circle>
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 30 30"
+                  class="tiresvg"
+                >
+                  <circle
+                    stroke-width="3"
+                    stroke="#282828"
+                    fill="#282828"
+                    r="13.5"
+                    cy="15"
+                    cx="15"
+                  ></circle>
+                  <circle fill="#DFDFDF" r="7" cy="15" cx="15"></circle>
+                </svg>
+              </div>
+              <div class="road"></div>
+          
+              <svg
+                xml:space="preserve"
+                viewBox="0 0 453.459 453.459"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlns="http://www.w3.org/2000/svg"
+                id="Capa_1"
+                version="1.1"
+                fill="#000000"
+                class="lampPost"
+              >
+  
+              </svg>
+            </div>
+          </div>
+          
+          <div class="card-body p-3">
+            <div class="timeline timeline-one-side">
+              <div class="timeline-block mb-3">
+                <span class="timeline-step">
+                  <i class="material-icons text-warning text-gradient">credit_card</i>
+                </span>
+                <div class="timeline-content">
+                  <h6 class="text-dark text-sm font-weight-bold mb-0">Payment ID: {{ order.paymentId }}</h6>
+                  <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">Order Date: {{ order.orderDate | date:'short' }}</p>
+                </div>
+              </div>
+              <h5 class="text-secondary font-weight-bold ">Customer Details</h5>
+              <br>
+              <div class="timeline-block mb-3">
+                <span class="timeline-step">
+                  <i class="fa-solid fa-user"></i>
+                </span>
+                <div class="timeline-content">
+                  <h6 class="text-dark text-sm font-weight-bold mb-0"> {{ order.userDetail.firstName }} {{ order.userDetail.lastName }}</h6>
+                  <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">User ID: {{ order.userDetail.userId }}</p>
+                  <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">Phone: {{ order.userDetail.phone }}</p>
+                  <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">Email: {{ order.userDetail.email }}</p>
+                </div>
+              </div>
+              <h5 class="text-secondary font-weight-bold icon-with-text">
+                <i class="fa-solid fa-location-dot"></i> 
+                Shipping Address
+              </h5>
+              <div class="timeline-block mb-3">
+                <div class="timeline-content">
+                  <h6 class="text-dark text-sm font-weight-bold mb-0"> {{ order.userDetail.firstName }} {{ order.userDetail.lastName }}</h6>
+                  <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">{{ order.userDetail.line }}</p>
+                  <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">{{ order.userDetail.phone }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="btn-container">
+            <button class="Btn" (click)="navigateToPayment()">
+              Make payment
+              <svg viewBox="0 0 576 512" class="svgIcon">
+                <path d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z"></path>
+              </svg>
+            </button>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </body>
+  </html> 
+ 

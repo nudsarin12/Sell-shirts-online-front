@@ -1,0 +1,118 @@
+<!-- <div class="card">
+    <div class="row">
+      <div class="col-md-8 cart">
+        <div class="title">
+          <div class="row">
+            <div class="col"><h4><b>Shopping Cart</b></h4></div>
+            <div *ngIf="cart.length === 0" class="text-center">
+              <p class="text-lg">Your cart is empty.</p>
+            </div>
+            <div class="col align-self-center text-right text-muted" *ngIf="cart.length > 0">{{ cart.length }} items</div>
+          </div>
+        </div>    
+        <div *ngIf="cart.length > 0">
+          <div class="row border-top border-bottom" *ngFor="let item of cart">
+            <div class="row main align-items-center">
+              <div class="col-2">
+                <img class="img-fluid" [src]="item.imgList.length > 0 ? item.imgList[0].value : 'assets/default-image.jpg'" alt="product">
+              </div>
+              <div class="col">
+                <div class="row text-muted">{{ item.productName }}</div>
+                <div class="row">{{ item.productDesc }}</div>
+              </div>
+              <div class="col">
+                <a href="" (click)="decrementQuantity(item, $event)">-</a>
+                <a href="#" class="border">{{ item.quantity }}</a>
+                <a href="" (click)="incrementQuantity(item, $event)">+</a>
+              </div>
+              <div class="col">฿ {{ item.productPrice  }} <span class="close" (click)="removeFromCart(item)">&#10005;</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="back-to-shop"><a href="productuser">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
+      </div>
+      <div class="col-md-4 summary">
+        <div><h5><b>Summary</b></h5></div>
+        <hr>
+        <div class="row">
+          <div class="col" style="padding-left:0;">ITEMS {{ cart.length }}</div>
+          <div class="col text-right">฿ {{ getTotalPrice() }}</div>
+        </div>
+        <form>
+          <p>SHIPPING</p>
+          <select><option class="text-muted">Standard-Delivery- free</option></select>
+        </form>
+        <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+          <div class="col">TOTAL PRICE</div>
+          <div class="col text-right">฿ {{ getTotalPriceWithShipping() }}</div>
+        </div>
+        <br>  
+        <div *ngIf="cart.length > 0">
+        <a class="purchase-button" data-content="CHECKOUT" (click)="checkout()">CHECKOUT</a>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+    -->
+
+
+    <div class="card">
+      <div class="row">
+        <div class="col-md-8 cart">
+          <div class="title">
+            <div class="row">
+              <div class="col"><h4><b>Shopping Cart</b></h4></div>
+              <div *ngIf="cart.length === 0" class="text-center">
+                <p class="text-lg">Your cart is empty.</p>
+              </div>
+              <div class="col align-self-center text-right text-muted" *ngIf="cart.length > 0">{{ getTotalQuantity() }} items</div>
+            </div>
+          </div>    
+          <div *ngIf="cart.length > 0">
+            <div class="row border-top border-bottom" *ngFor="let item of cart">
+              <div class="row main align-items-center">
+                <div class="col-2">
+                  <img class="img-fluid" [src]="item.imgList.length > 0 ? item.imgList[0].value : 'assets/default-image.jpg'" alt="product">
+                </div>
+                <div class="col">
+                  <div class="row text-muted">{{ item.productName }}</div>
+                  <div class="row">{{ item.productDesc }}</div>
+                </div>
+                <div class="col">
+                  <a href="" (click)="decrementQuantity(item, $event)">-</a>
+                  <a href="#" class="border">{{ item.quantity }}</a>
+                  <a href="" (click)="incrementQuantity(item, $event)">+</a>
+                </div>
+                <div class="col">฿ {{ item.productPrice }} <span class="close" (click)="removeFromCart(item)">&#10005;</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="back-to-shop"><a href="productuser">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
+        </div>
+        <div class="col-md-4 summary">
+          <div><h5><b>Summary</b></h5></div>
+          <hr>
+          <div class="row">
+            <div class="col" style="padding-left:0;">ITEMS {{ getTotalQuantity() }}</div>
+            <div class="col text-right">฿ {{ getTotalPrice() }}</div>
+          </div>
+          <form>
+            <p>SHIPPING</p>
+            <select><option class="text-muted">Standard-Delivery- free</option></select>
+          </form>
+          <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+            <div class="col">TOTAL PRICE</div>
+            <div class="col text-right">฿ {{ getTotalPriceWithShipping() }}</div>
+          </div>
+          <br>
+          <div *ngIf="cart.length > 0">
+            <a class="purchase-button" data-content="CHECKOUT" (click)="checkout()">CHECKOUT</a>
+            <!-- <a class="purchase-button" data-content="CHECKOUT" href="address-from">CHECKOUT</a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    

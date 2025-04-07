@@ -1,3 +1,7 @@
+
+
+
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { CallserviceService } from '../services/callservice.service';
@@ -37,15 +41,26 @@ export class LoginComponent implements OnInit {
     this.callService.authen(userName, password).subscribe(res => {
       console.log(res);
       if (res.data) {
-        // Swal.fire({
-        //   icon: 'success',
-        //   title: 'สำเร็จ!',
-        //   text: 'เข้าสู่ระบบสำเร็จจ้า',
-        //   confirmButtonText: 'ตกลง',
-        // });
-
+        // Successful login
         sessionStorage.setItem("userDetail", JSON.stringify(res.data));
         this.dataSharingService.userDetail.next(true);
+
+        // Display success toast
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "bottom-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          }
+        });
+        // Toast.fire({
+        //   icon: "success",
+        //   title: "เข้าสู่ระบบสำเร็จ"
+        // });
 
         // Redirect based on role
         if (res.data.roleId === 1) {
@@ -55,11 +70,21 @@ export class LoginComponent implements OnInit {
         }
 
       } else {
-        Swal.fire({
-          icon: 'warning',
-          title: 'เข้าสู่ระบบไม่สำเร็จ!',
-          text: 'กรุณาตรวจสอบข้อมูลด้วยจ้า',
-          confirmButtonText: 'ตกลง',
+        // Unsuccessful login
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "bottom-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          }
+        });
+        Toast.fire({
+          icon: "warning",
+          title: "Login failed Please check your information!"
         });
       }
     });

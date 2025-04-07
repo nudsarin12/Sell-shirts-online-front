@@ -1,0 +1,63 @@
+<!-- address.component.html -->
+
+<div class="card">
+  <div class="row">
+    <div class="col-md-8 cart">
+      <div class="title">
+        <div class="row">
+          <div class="col"><h4><b>Add Shipping Address</b></h4></div>
+        </div>
+      </div>    
+      <div class="city-postal-row">
+        <div class="city-postal-group">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" [(ngModel)]="address.firstName" name="firstName" placeholder="First Name" class="city-input"/>
+        </div>
+        <div class="city-postal-group">
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" [(ngModel)]="address.lastName" name="lastName" placeholder="Last Name" class="city-input"/>
+        </div>
+        <div class="city-postal-group">
+          <label for="phone">Phone</label>
+          <input type="text" id="phone" [(ngModel)]="address.phone" name="phone" placeholder="Phone" class="city-input"/>
+        </div>
+      </div>
+      <div class="city-postal-row">
+        <div class="city-postal-group">
+          <label for="city">City</label>
+          <input type="text" id="city" [(ngModel)]="address.city" name="city" placeholder="City" class="city-input"/>
+        </div>
+        <div class="city-postal-group">
+          <label for="zipcode">Zipcode</label>
+          <input type="text" id="zipcode" [(ngModel)]="address.zipcode" name="zipcode" placeholder="Zipcode" class="city-input"/>
+        </div>
+        <div class="city-postal-group">
+          <label for="country">Country</label>
+          <input type="text" id="country" [(ngModel)]="address.country" name="country" placeholder="Country" class="city-input"/>
+        </div>
+      </div>
+      <label for="address">Address</label>
+      <textarea id="address" [(ngModel)]="address.address" rows="3" class="form-control"></textarea>
+      <br>
+      <div class="button-container">
+        <button class="button" (click)="saveAddress()">Deliver Here</button>
+      </div>
+      
+      <!-- แสดงข้อมูลที่อยู่ที่ดึงมา -->
+      <div *ngIf="addresses.length > 0">
+        <h4>Saved Addresses</h4>
+        <ul>
+          <li *ngFor="let addr of addresses">
+            <p><strong>First Name:</strong> {{ addr.firstName }}</p>
+            <p><strong>Last Name:</strong> {{ addr.lastName }}</p>
+            <p><strong>Phone:</strong> {{ addr.phone }}</p>
+            <p><strong>City:</strong> {{ addr.city }}</p>
+            <p><strong>Zipcode:</strong> {{ addr.zipcode }}</p>
+            <p><strong>Country:</strong> {{ addr.country }}</p>
+            <p><strong>Address:</strong> {{ addr.address }}</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

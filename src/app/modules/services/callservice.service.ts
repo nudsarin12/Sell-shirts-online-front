@@ -20,12 +20,12 @@ export class CallserviceService {
   ) { }
 
   getAllRole() : Observable<any> {
-    return this.http.get(API_ENDPOINT.concat('/role/getAll'));
+    return this.http.get(API_ENDPOINT.concat('/role/getAllRole'));
   }
 
   saveRegister(data : any) : Observable<any> {
     const body = JSON.stringify(data);
-    return this.http.post<any>(API_ENDPOINT.concat('/register/save'), body, httpOptions)
+    return this.http.post<any>(API_ENDPOINT.concat('/register/insert'), body, httpOptions)
   }
 
   authen(userName:any, password:any) : Observable<any> {
@@ -35,11 +35,11 @@ export class CallserviceService {
 
   updateProfile(data : any, userId : any) : Observable<any> {
     const body = JSON.stringify(data);
-    return this.http.put<any>(API_ENDPOINT.concat('/register/update/'+ userId), body, httpOptions)
+    return this.http.put<any>(API_ENDPOINT.concat('/user/update/'+ userId), body, httpOptions)
   }
 
   getByUserId(userId:any) : Observable<any> {
-    return this.http.get(API_ENDPOINT.concat('/register/getById?userId=' + userId))
+    return this.http.get(API_ENDPOINT.concat('/user/getById?userId=' + userId))
   }
 
   getAllUser() : Observable<any> {
@@ -47,7 +47,7 @@ export class CallserviceService {
   }
 
   deleteUserByUserId(userId : any) : Observable<any> {
-    return this.http.delete(API_ENDPOINT.concat('/register/delete?userId='+ userId));
+    return this.http.delete(API_ENDPOINT.concat('/user/delete?userId='+ userId));
   }
 
 
@@ -78,7 +78,7 @@ export class CallserviceService {
   }
 
   getProductTypeAll() : Observable<any> {
-    return this.http.get(API_ENDPOINT.concat('/product/getProductTypeAll'));
+    return this.http.get(API_ENDPOINT.concat('/product/getAllProductType'));
   }
 
   saveImage(formData: FormData, productId : any) : Observable<any> {
@@ -87,7 +87,7 @@ export class CallserviceService {
 
   saveProduct(data : any) : Observable<any> {
     const body = JSON.stringify(data);
-    return this.http.post<any>(API_ENDPOINT.concat('/product/save'), body, httpOptions)
+    return this.http.post<any>(API_ENDPOINT.concat('/product/insert'), body, httpOptions)
   }
 
   removeImgByProductId(productId : any) : Observable<any> {
@@ -111,9 +111,77 @@ export class CallserviceService {
     return this.http.delete(API_ENDPOINT.concat('/product/deleteImgByFileName?fileName='+ fileName));
   }
 
+  placeOrder(orderDetails: any): Observable<any> {
+    return this.http.post<any>(API_ENDPOINT.concat('/order/addOrder'), orderDetails, httpOptions);
+  }
+
+  getAllOrders(): Observable<any> {
+    return this.http.get(API_ENDPOINT.concat('/order/getAllOrders'));
+  }
+
+  getOrderDetails(orderId: number): Observable<any> {
+    return this.http.get(API_ENDPOINT.concat('/order/getOrderDetails/' + orderId));
+  }
+
+  deleteOrder(orderId: number): Observable<any> {
+    return this.http.delete(API_ENDPOINT.concat('/order/deleteOrder/' + orderId), httpOptions);
+  }
+
+  getOrdersByUserId(userDetailId: number): Observable<any> {
+    return this.http.get(
+      API_ENDPOINT.concat('/order/getOrdersByUserId/' + userDetailId)
+    );
+  }
+  saveOrderImage(formData: FormData, orderId: any): Observable<any> {
+    return this.http.post<any>(
+      API_ENDPOINT.concat('/order/saveOrderImg/' + orderId),
+      formData
+    );
+  }
+
+  deleteOrderImage(fileName: any): Observable<any> {
+    return this.http.delete(
+      API_ENDPOINT.concat('/order/deleteOrderImgByFileName?fileName=' + fileName)
+    );
+  }
+
+  getBlobOrderThumbnail(fileName: string): Observable<Blob> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    });
+    return this.http.get<Blob>(
+      API_ENDPOINT.concat('/order/getImageByte?fileName=' + fileName),
+      { headers: headers, responseType: 'blob' as 'json' }
+    );
+  }
+
+  getOrderImageByte(fileName: string): Observable<Blob> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    });
+    return this.http.get<Blob>(
+      API_ENDPOINT.concat('/order/getImageByte?fileName=' + fileName),
+      { headers: headers, responseType: 'blob' as 'json' }
+    );
+  }
+
+  updateOrder(orderId: number, updatedOrder: any): Observable<any> {
+    return this.http.put(
+      API_ENDPOINT.concat('/order/updateOrder/' + orderId),
+      updatedOrder,
+      httpOptions
+    );
+  }
+
+  saveAddress(data: any): Observable<any> {
+    const body = JSON.stringify(data);
+    return this.http.post<any>(API_ENDPOINT.concat('/address/save'), body, httpOptions);
+  }
+  getAllAddresses(): Observable<any> {
+    return this.http.get(API_ENDPOINT.concat('/address/getAll'));
+  }
+  
+
 }
-
-
-
-
-

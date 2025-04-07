@@ -1,26 +1,246 @@
-/*!
+.button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgb(20, 20, 20);
+  border: none;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
+  cursor: pointer;
+  transition-duration: 0.3s;
+  overflow: hidden;
+  position: relative;
+  gap: 2px;
+}
 
-=========================================================
-* Material Dashboard 2 - v3.1.0
-=========================================================
+.svgIcon {
+  width: 12px;
+  transition-duration: 0.3s;
+}
 
-* Product Page: https://www.creative-tim.com/product/material-dashboard
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/material-dashboard/blob/master/LICENSE.md)
+.svgIcon path {
+  fill: white;
+}
 
-* Coded by www.creative-tim.com
+.button:hover {
+  transition-duration: 0.3s;
+  background-color: rgb(255, 69, 69);
+  align-items: center;
+  gap: 0;
+}
 
-=========================================================
+.bin-top {
+  transform-origin: bottom right;
+}
+.button:hover .bin-top {
+  transition-duration: 0.5s;
+  transform: rotate(160deg);
+}
+.editBtn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  border: none;
+  background-color: rgb(0, 0, 0);
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.123);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+.editBtn::before {
+  content: "";
+  width: 200%;
+  height: 200%;
+  background-color: rgb(0, 0, 0);
+  position: absolute;
+  z-index: 1;
+  transform: scale(0);
+  transition: all 0.3s;
+  border-radius: 50%;
+  filter: blur(10px);
+}
+.editBtn:hover::before {
+  transform: scale(1);
+}
+.editBtn:hover {
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.336);
+}
 
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
+.editBtn svg {
+  height: 17px;
+  fill: white;
+  z-index: 3;
+  transition: all 0.2s;
+  transform-origin: bottom;
+}
+.editBtn:hover svg {
+  transform: rotate(-15deg) translateX(5px);
+}
+.editBtn::after {
+  content: "";
+  width: 25px;
+  height: 1.5px;
+  position: absolute;
+  bottom: 19px;
+  left: -5px;
+  background-color: white;
+  border-radius: 2px;
+  z-index: 2;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease-out;
+}
+.editBtn:hover::after {
+  transform: scaleX(1);
+  left: 0px;
+  transform-origin: right;
+}
+.loaders-container {
+  display: flex;
+  justify-content: flex-end; /* จัดวางให้อยู่ที่มุมขวา */
+  align-items: center; /* จัดให้ Loader อยู่ตรงกลางตามแนวตั้ง */
+  margin-right: 20px; /* ระยะห่างของ Loader จากขอบขวาของหน้าจอ */
+}
 
-/*!
-   * Bootstrap  v5.2.3 (https://getbootstrap.com/)
-   * Copyright 2011-2022 The Bootstrap Authors
-   * Copyright 2011-2022 Twitter, Inc.
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
-   */
+.loader {
+  --path: #f0d24d;
+  --dot: #38ee28;
+  --duration: 3s;
+  width: 44px;
+  height: 44px;
+  position: relative;
+  &:before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      position: absolute;
+      display: block;
+      background: var(--dot);
+      top: 37px;
+      left: 19px;
+      transform: translate(-18px, -18px);
+      animation: dotRect var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+  }
+  svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      rect,
+      polygon,
+      circle {
+          fill: none;
+          stroke: var(--path);
+          stroke-width: 10px;
+          stroke-linejoin: round;
+          stroke-linecap: round;
+      }
+      polygon {
+          stroke-dasharray: 145 (221 - 145) 145 (221 - 145);
+          stroke-dashoffset: 0;
+          animation: pathTriangle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+      }
+      rect {
+          stroke-dasharray: (256 / 4 * 3) (256 / 4) (256 / 4 * 3) (256 / 4);
+          stroke-dashoffset: 0;
+          animation: pathRect 3s cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+      }
+      circle {
+          stroke-dasharray: (200 / 4 * 3) (200 / 4) (200 / 4 * 3) (200 / 4);
+          stroke-dashoffset: 75;
+          animation: pathCircle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+      }
+  }
+  &.triangle {
+      width: 48px;
+      &:before {
+          left: 21px;
+          transform: translate(-10px, -18px);
+          animation: dotTriangle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+      }
+  }
+}
+
+@keyframes pathTriangle {
+  33% {
+      stroke-dashoffset: 74;
+  }
+  66% {
+      stroke-dashoffset: 147;
+  }
+  100% {
+      stroke-dashoffset: 221;
+  }
+}
+
+@keyframes dotTriangle {
+  33% {
+      transform: translate(0, 0);
+  }
+  66% {
+      transform: translate(10px, -18px);
+  }
+  100% {
+      transform: translate(-10px, -18px);
+  }
+}
+
+@keyframes pathRect {
+  25% {
+      stroke-dashoffset: 64;
+  }
+  50% {
+      stroke-dashoffset: 128;
+  }
+  75% {
+      stroke-dashoffset: 192;
+  }
+  100% {
+      stroke-dashoffset: 256;
+  }
+}
+
+@keyframes dotRect {
+  25% {
+      transform: translate(0, 0);
+  }
+  50% {
+      transform: translate(18px, -18px);
+  }
+  75% {
+      transform: translate(0, -36px);
+  }
+  100% {
+      transform: translate(-18px, -18px);
+  }
+}
+
+@keyframes pathCircle {
+  25% {
+      stroke-dashoffset: 125;
+  }
+  50% {
+      stroke-dashoffset: 175;
+  }
+  75% {
+      stroke-dashoffset: 225;
+  }
+  100% {
+      stroke-dashoffset: 275;
+  }
+}
+
+
+
+
+/* --------------------------------------------------------- */
    :root {
     --bs-blue: #63B3ED;
     --bs-indigo: #596CFF;

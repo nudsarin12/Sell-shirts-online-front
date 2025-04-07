@@ -1,2 +1,104 @@
+.footer {
+    background: black; /* Change the background color to black */
+    padding-top: 70px;
+}
 
-  
+.footer__about {
+    margin-bottom: 30px;
+}
+
+.footer__about .footer__logo {
+    margin-bottom: 10px; /* Reduced margin-bottom */
+    max-width: 60px; /* Adjusted max-width of the logo container */
+}
+
+.footer__about .footer__logo a {
+    display: inline-block;
+}
+
+.footer__about p {
+    color: #b7b7b7;
+    margin-bottom: 30px;
+}
+
+.footer__widget {
+    margin-bottom: 30px;
+}
+
+.footer__widget h6 {
+    color: white; /* Ensure heading text is white for contrast */
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.footer__widget ul li {
+    line-height: 36px;
+    list-style: none;
+}
+
+.footer__widget ul li a {
+    color: #b7b7b7; /* Adjusted text color for readability */
+    font-size: 15px;
+    text-decoration: none; /* Remove underline from links */
+}
+
+.footer__newslatter p {
+    color: #b7b7b7;
+}
+
+.footer__newslatter form {
+    position: relative;
+}
+
+.footer__newslatter form input {
+    width: 100%;
+    font-size: 15px;
+    color: #3d3d3d;
+    background: transparent;
+    border: none;
+    padding: 15px 0;
+    border-bottom: 2px solid white; /* Adjust border color to white */
+}
+
+.footer__newslatter form input::placeholder {
+    color: #b7b7b7; /* Adjust placeholder color for readability */
+}
+
+.footer__newslatter form button {
+    color: #b7b7b7;
+    font-size: 16px;
+    position: absolute;
+    right: 5px;
+    top: 0;
+    height: 100%;
+    background: transparent;
+    border: none;
+    cursor: pointer; /* Add cursor pointer for better UX */
+}
+
+.footer__newslatter form button span {
+    font-size: 16px;
+}
+
+.footer__copyright__text {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+.footer__copyright__text p {
+    color: #b7b7b7;
+    margin-bottom: 0;
+}
+
+.fa-heart {
+    color: #ff6347; /* Adjusted icon color for contrast */
+}
+
+a {
+    color: #ff6347; /* Adjusted link color for contrast */
+    text-decoration: none; /* Remove underline from links */
+}

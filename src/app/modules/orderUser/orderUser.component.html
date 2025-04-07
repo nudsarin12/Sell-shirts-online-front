@@ -1,0 +1,111 @@
+ <!-- <div class="heading_container heading_center">
+  <h2>
+    My <span>Orders</span>
+  </h2>
+</div>
+
+<div class="min-h-screen bg-black bg-opacity-50 backdrop-filter backdrop-blur-lg text-white p-4">
+  <div class="container mx-auto bg-black bg-opacity-70 rounded-lg shadow-lg p-6">
+    <div *ngIf="orders.length === 0" class="text-center text-gray-400">
+      No orders found.
+    </div>
+
+    <div *ngIf="orders.length > 0" class="space-y-4">
+      <div *ngFor="let order of orders" class="bg-gray-800 shadow-md rounded-lg p-4 border border-gray-700">
+        <div class="flex justify-between items-center">
+          <div>
+            <h2 class="text-xl font-semibold mb-2">Order #{{ order.orderId }}</h2>
+            <p class="text-gray-300">Order Date: {{ order.orderDate | date: 'short' }}</p>
+            <p class="text-gray-300">Total Amount: ${{ order.totalAmount }}</p>
+            <p class="text-gray-300">Status: {{ order.status }}</p>
+          </div>
+          <div class="flex space-x-2">
+            <button 
+              class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" 
+              (click)="viewOrder(order)"
+            >
+              View Details
+            </button>
+            <button 
+              class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700" 
+              (click)="deleteOrder(order.orderId)"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+        <div class="mt-4">
+          <h3 class="font-semibold">Order Items:</h3>
+          <ul class="list-disc pl-5">
+            <li *ngFor="let item of order.items" class="text-gray-300">
+              Product ID: {{ item.productId }}, Quantity: {{ item.quantity }}, Price: ${{ item.price }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>  -->
+
+
+ <div class="container-fluid py-4">
+  <div class="row justify-content-center">
+    <div *ngIf="orders.length === 0" class="text-center text-gray-400">
+      No orders found.
+    </div>
+    <div class="col-xl-6 col-md-8 mb-4" *ngIf="orders.length > 0">
+      <div class="card mb-4" *ngFor="let order of orders">
+        <div class="card-body p-3">
+          <div class="row">
+            <div class="col-8">
+              <div class="numbers">
+                <h2 class="text-sm mb-0 text-uppercase font-weight-bold">Order #{{ order.orderId }}</h2>
+                <div class="timeline-content">
+                  <h6 class="text-dark text-sm font-weight-bold mb-0"> Order Date: {{ order.orderDate | date:'short' }}</h6>
+                  <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">Payment ID: {{ order.paymentId }}</p>
+                </div>
+                <p>Status: {{ order.status }}</p>
+                <h5 class="text-secondary font-weight-bold">Order Items</h5>
+                <br>
+                <div class="timeline-block mb-3">
+                  <span class="timeline-step">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                  </span>
+                  <div class="timeline-content" *ngFor="let item of order.items">
+                    <h6 class="text-dark text-sm font-weight-bold mb-0"> Product ID: {{ item.productId }}</h6>
+                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">Quantity: {{ item.quantity }}</p>
+                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">Price: ฿{{ item.price }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-4 d-flex justify-content-end align-items-start">
+              <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
+                <i class="fa-solid fa-cart-flatbed"></i>
+              </div>
+            </div>
+          </div>
+          <p class="mb-0 me-3 d-flex justify-content-end align-items-center mt-3 text-uppercase font-weight-bold">
+            Total Amount: ฿&nbsp;{{ order.totalAmount }}
+          </p>          
+          <div class="d-flex justify-content-end align-items-center mt-3">
+           
+            <button type="button" class="btn btn-outline-dark me-2" (click)="viewOrder(order)">
+              <i class="fa-solid fa-eye"></i> <span style="margin-left: 10px;">View Details</span>
+            </button>
+            <button type="button" class="btn btn-outline-dark" (click)="deleteOrder(order.orderId)">
+              <i class="fa-solid fa-trash"></i> <span style="margin-left: 10px;">Delete</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>   
+
+
+
+ 
+
+
+
