@@ -1,5 +1,9 @@
 # BookingCar
 
+โปรเจ็คนี้มี 2 ส่วน ทั้งส่วนของ **Front-end** และ **Back-end**  
+- 🔹 **นี่คือส่วนของ Front-end** (พัฒนาด้วย Angular)  
+- 🔹 **นี่คือส่วนของ Back-end**: [Sell-shirts-online-back](https://github.com/nudsarin12/Sell-shirts-online-back)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.6.
 
 ## Development server
@@ -25,3 +29,4 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
